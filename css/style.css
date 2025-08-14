@@ -26,16 +26,16 @@
     --font-size-small: 0.8rem; /* 작은 텍스트 크기 (13px 기준 10.4px) */
     
     /* 색상 팔레트 */
-    --color-primary: rgb(245, 142, 255);   /* 주요 강조 색상 (노랑) */
-    --color-link: rgb(204, 0, 58);       /* 링크 색상 (파랑) */
-    --color-text-primary: rgb(0, 0, 0);   /* 기본 텍스트 색상 (검정) */
-    --color-background-light: rgb(250, 250, 250); /* 밝은 배경색 (회색) */
+    --color-primary: rgb(245, 176, 248);   /* 주요 강조 색상 (노랑) */
+    --color-link: rgb(219, 13, 52);       /* 링크 색상 (파랑) */
+    --color-text-primary: rgb(48, 29, 23);   /* 기본 텍스트 색상 (검정) */
+    --color-background-light: rgb(240, 240, 240); /* 밝은 배경색 (회색) */
     
     /* RGB 버전 (알파 투명도 사용 시) */
-    --color-primary-rgb: 245, 142, 225;
-    --color-link-rgb: 204, 0, 58;   
-    --color-text-primary-rgb: 0, 0, 0;
-    --color-background-light-rgb: 250, 250, 250;
+    --color-primary-rgb: 245, 176, 248;
+    --color-link-rgb: 219, 13, 52;   
+    --color-text-primary-rgb: 48, 29, 23;
+    --color-background-light-rgb: 240, 240, 240;
 
     /* 간격/여백 변수 (Spacing Variables) */
     --spacing-xxs: 0.25rem;
