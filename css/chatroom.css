@@ -184,12 +184,12 @@
 /*
    각 사용자에게 할당되는 고유 색상 클래스를 정의합니다.
 */
-.user-color-0 { color: #00b900; }
-.user-color-1 { color: #1212ff; }
-.user-color-2 { color: #880000; }
-.user-color-3 { color: #aaaa00; }
-.user-color-4 { color: #880088; }
-.user-color-5 { color: #008888; }
+.user-color-0 { color: #f5b0f8; }
+.user-color-1 { color: #8cb360; }
+.user-color-2 { color: #f559b0; }
+.user-color-3 { color: #634234; }
+.user-color-4 { color: #f8ddc9; }
+.user-color-5 { color: #db0d34; }
 
 /* --- 타임스탬프 (Timestamp) --- */
 /*
