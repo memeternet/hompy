@@ -25,47 +25,6 @@ function isValidGoogleDriveId(id) {
     return true;
 }
 
-// YouTube URL 또는 ID에서 비디오 ID만 추출
-function parseYouTubeId(input) {
-    if (!input) return null;
-    // 이미 ID처럼 보이면 바로 사용 (대개 11자)
-    const idLike = /^[a-zA-Z0-9_-]{10,}$/;
-    if (idLike.test(input) && !input.includes("youtube") && !input.includes("youtu.be")) {
-    return input.slice(0, 11);
-    }
-    
-    
-    try {
-    const url = new URL(input);
-    const host = url.hostname.replace("www.", "");
-    
-    
-    // https://youtu.be/<id>
-    if (host === "youtu.be") {
-    return url.pathname.slice(1).split("/")[0];
-    }
-    
-    
-    // https://youtube.com/watch?v=<id>
-    if (host === "youtube.com" || host === "m.youtube.com" || host === "youtube-nocookie.com") {
-    const v = url.searchParams.get("v");
-    if (v) return v;
-    // shorts → /shorts/<id>
-    if (url.pathname.startsWith("/shorts/")) {
-    return url.pathname.split("/")[2];
-    }
-    // embed → /embed/<id>
-    if (url.pathname.startsWith("/embed/")) {
-    return url.pathname.split("/")[2];
-    }
-    }
-    } catch (e) {
-    // input이 URL이 아니면 무시
-    }
-    return null;
-    }
-
-
 /**
  * 로컬 HTML 파일 이름의 유효성을 검증합니다.
  * 경로 탐색(e.g., ../)을 방지하고, .html 확장자를 확인합니다.
@@ -145,17 +104,6 @@ export function getEmbedURL(type, id) {
             }
             embedSrc = `contents/html/${id}`;
             break;
-        case "youtube": {
-            const vid = parseYouTubeId(idOrLink);
-            if (!vid) return "";
-                const params = new URLSearchParams({
-                modestbranding: "1",
-                rel: "0",
-                controls: "1",
-                enablejsapi: "1",
-                });
-            return `https://www.youtube-nocookie.com/embed/${vid}?${params.toString()}`;
-            }
         default: // 정의되지 않은 타입인 경우
             console.warn(`Unsupported embed type: ${type}`);
             embedSrc = ''; // 빈 문자열 반환
