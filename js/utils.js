@@ -146,16 +146,20 @@ export function getEmbedURL(type, id) {
             embedSrc = `contents/html/${id}`;
             break;
         case "youtube": {
-            const vid = parseYouTubeId(idOrLink);
-            if (!vid) return "";
+            const vid = parseYouTubeId(id); // ← idOrLink 대신 id 사용
+            if (!vid) {
+                  console.error(`Invalid YouTube id or link "${id}".`);
+                  return '';
+                }
                 const params = new URLSearchParams({
-                modestbranding: "1",
-                rel: "0",
-                controls: "1",
-                enablejsapi: "1",
+                  modestbranding: '1',
+                  rel: '0',
+                  controls: '1',
+                  enablejsapi: '1',
                 });
-            return `https://www.youtube-nocookie.com/embed/${vid}?${params.toString()}`;
-            }
+                embedSrc = `https://www.youtube-nocookie.com/embed/${vid}?${params.toString()}`;
+                break;
+              }
         default: // 정의되지 않은 타입인 경우
             console.warn(`Unsupported embed type: ${type}`);
             embedSrc = ''; // 빈 문자열 반환
